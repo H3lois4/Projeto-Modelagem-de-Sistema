@@ -1,0 +1,18 @@
+{
+  "name": "IPRA no Ariri",
+  "short_name": "IPRA Ariri",
+  "description": "App da missão IPRA no Ariri",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf6ee",
+  "theme_color": "#1a4731",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/assets/Ariri.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

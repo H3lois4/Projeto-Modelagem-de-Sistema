@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IPRA no Ariri</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a4731">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="assets/Ariri.png">
+</head>
+<body>
+    <!-- Registro do Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(reg) {
+            console.log('SW registrado:', reg.scope);
+          }).catch(function(err) {
+            console.log('SW erro (normal em HTTP):', err);
+          });
+        });
+      }
+    </script>
+    <!-- Indicador de conectividade -->
+    <div id="connectivity-indicator" class="connectivity-indicator offline" title="Status da conexão">
+        <span class="connectivity-dot"></span>
+        <span class="connectivity-label">Offline</span>
+    </div>
+
+    <!-- Container principal da SPA -->
+    <div id="app"></div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav id="bottom-nav" class="bottom-nav" role="navigation" aria-label="Navegação principal">
+        <button class="nav-item active" data-route="#/info" onclick="window.location.hash='#/info'" aria-label="Informações" aria-current="page">
+            <svg class="nav-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+        </button>
+
+        <button class="nav-item" data-route="#/forms" onclick="window.location.hash='#/forms'" aria-label="Formulários">
+            <svg class="nav-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                <line x1="8" y1="10" x2="16" y2="10"/>
+                <line x1="8" y1="14" x2="16" y2="14"/>
+                <line x1="8" y1="18" x2="12" y2="18"/>
+            </svg>
+        </button>
+
+        <button class="nav-item" data-route="#/diary" onclick="window.location.hash='#/diary'" aria-label="Diário">
+            <svg class="nav-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+            </svg>
+        </button>
+
+        <button class="nav-item" data-route="#/menu" onclick="window.location.hash='#/menu'" aria-label="Menu">
+            <svg class="nav-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/sync.js"></script>
+    <script src="js/resize.js"></script>
+    <script src="js/pages/splash.js"></script>
+    <script src="js/pages/info.js"></script>
+    <script src="js/pages/day-detail.js"></script>
+    <script src="js/pages/forms.js"></script>
+    <script src="js/pages/form-new.js"></script>
+    <script src="js/pages/diary.js"></script>
+    <script src="js/pages/post-new.js"></script>
+    <script src="js/pages/menu.js"></script>
+    <script src="js/pages/accounts.js"></script>
+    <script src="js/pages/receipt-new.js"></script>
+    <script src="js/pages/team.js"></script>
+    <script src="js/pages/volunteer-profile.js"></script>
+    <script src="js/pages/settings.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

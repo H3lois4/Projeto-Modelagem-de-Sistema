@@ -1,0 +1,117 @@
+{
+  "days": [
+    {
+      "id": "sabado",
+      "label": "Sábado",
+      "date": "18/04",
+      "schedule": [
+        { "time": "08:00", "activity": "Chegada e acomodação" },
+        { "time": "08:00-09:00", "activity": "Café, devocional e informações gerais (Café: Clarissa, Talita e Márcio | Devocional: Pastor)" },
+        { "time": "09:00-12:00", "activity": "Programa equipe MEAP + Visita nas ilhas (Equipe 1: Roberto, Adilson, Letícia, Miriane, Ana e Samuel)" },
+        { "time": "12:30", "activity": "Almoço (Clarissa, Talita e Pastor)" },
+        { "time": "14:30", "activity": "Projeto Meu Peixinho - crianças (Clarissa, Heloísa, Letícia, Samuel e Ana)" },
+        { "time": "16:30", "activity": "Café da tarde (Roberto, Márcio e Adilson)" },
+        { "time": "17:30", "activity": "Banho" },
+        { "time": "18:30", "activity": "Ensaio (Letícia - teclado, Ana - ukulele, Samuel, Heloísa)" },
+        { "time": "19:30", "activity": "Culto jovens (Sermão: Samuel)" },
+        { "time": "21:15", "activity": "Jantar (Talita, Miriane e Roberto)" },
+        { "time": "22:00", "activity": "Diário de bordo - compartilhar e oração (Resp.: Pastor)" },
+        { "time": "23:00", "activity": "Dormir" }
+      ],
+      "menu": {
+        "breakfast": "Pães e bolos caseiros, frutas frescas, leite, achocolatado e café",
+        "lunch": "Arroz, feijão, frango, salada de batata com ovos cozidos",
+        "snack": "Pães, bolos caseiros e frutas, chá e patê de atum",
+        "dinner": "Arroz, feijão, frango, salada de repolho/alface com tomate, gelatina (sobremesa)"
+      },
+      "materials": [
+        "Material Projeto Meu Peixinho",
+        "Teclado e ukulele para ensaio",
+        "Material para culto jovens"
+      ]
+    },
+    {
+      "id": "domingo",
+      "label": "Domingo",
+      "date": "19/04",
+      "schedule": [
+        { "time": "07:30", "activity": "Café e devocional equipe (Café: Márcio, Adilson e Letícia | Devocional: Roberto)" },
+        { "time": "09:00-12:00", "activity": "Programa equipe MEAP (Adilson, Márcio, Roberto e Pastor)" },
+        { "time": "12:30", "activity": "Almoço (Talita, Clarissa, Ana e Samuel)" },
+        { "time": "14:00", "activity": "Discipulado (Pastor, Samuel e Heloísa) | Visitação (Roberto, Márcio e Letícia) | Manutenção (Adilson e equipe MEAP) | Corte de cabelo (Miriane e Talita) | Palestra Saúde (Eduarda, Clarissa e Ana)" },
+        { "time": "16:30", "activity": "Café da tarde (Ana, Heloísa e Samuel)" },
+        { "time": "17:30", "activity": "Banho" },
+        { "time": "18:30", "activity": "Ensaio (Letícia - teclado, Ana - ukulele, Samuel e Eduarda)" },
+        { "time": "19:30", "activity": "Culto 40 anos MEAP (Pregação: Pastor)" },
+        { "time": "21:15", "activity": "Jantar (Clarissa, Márcio, Talita)" },
+        { "time": "22:00", "activity": "Diário de bordo - compartilhar e oração (Resp.: Samuel)" },
+        { "time": "23:00", "activity": "Dormir" }
+      ],
+      "menu": {
+        "breakfast": "Pães com manteiga, ovos mexidos, leite, achocolatado e café",
+        "lunch": "Arroz, feijão, peixe ensopado com batatas, couve refogada, salada de alface/repolho com tomate",
+        "snack": "Bolo, pães com patê e manteiga, chá",
+        "dinner": "Arroz, feijão, peixe frito/assado, salada de repolho/couve"
+      },
+      "materials": [
+        "Material discipulado",
+        "Kit corte de cabelo",
+        "Material palestra saúde",
+        "Ferramentas manutenção",
+        "Teclado e ukulele"
+      ]
+    },
+    {
+      "id": "segunda",
+      "label": "Segunda",
+      "date": "20/04",
+      "schedule": [
+        { "time": "07:30", "activity": "Café e devocional equipe (Café: Adilson, Letícia e Eduarda | Devocional: Márcio)" },
+        { "time": "09:00-12:00", "activity": "Programa equipe MEAP + Visita nas ilhas (Equipe 2: Pastor, Samuel, Eduarda, Heloísa, Talita e Márcio)" },
+        { "time": "12:30", "activity": "Almoço (Roberto, Miriane, Letícia)" },
+        { "time": "14:00", "activity": "Visitação e evangelismo ou programa equipe MEAP (Todos, exceto equipe café)" },
+        { "time": "16:00", "activity": "Café da tarde (Talita, Clarissa e Márcio)" },
+        { "time": "17:30", "activity": "Banho" },
+        { "time": "18:30", "activity": "Oração das mulheres (Eduarda, Miriane e Heloísa)" },
+        { "time": "19:30", "activity": "Vôlei e evangelismo (Adilson, Talita, Letícia, Eduarda, Samuel, Heloísa e Ana)" },
+        { "time": "21:30", "activity": "Jantar (Pastor, Roberto e Márcio)" },
+        { "time": "22:15", "activity": "Diário de bordo - compartilhar e oração (Resp.: Márcio)" },
+        { "time": "23:00", "activity": "Banho e dormir" }
+      ],
+      "menu": {
+        "breakfast": "Pães com manteiga, ovos mexidos, leite, achocolatado e café",
+        "lunch": "Arroz, feijão, frango caipira/peixe, salada de alface/repolho, cenoura refogada, gelatina (sobremesa)",
+        "snack": "Biscoitos e pães, leite, café, achocolatado e chá",
+        "dinner": "Arroz, feijão, peixe frito, salada de repolho"
+      },
+      "materials": [
+        "Bola de vôlei e rede",
+        "Material evangelismo",
+        "Material oração das mulheres"
+      ]
+    },
+    {
+      "id": "terca",
+      "label": "Terça",
+      "date": "21/04",
+      "schedule": [
+        { "time": "07:30", "activity": "Café e devocional equipe (Café: Clarissa, Talita, Miriane | Devocional: Samuel)" },
+        { "time": "09:00-11:00", "activity": "Programa equipe MEAP - discipulado (Todos, exceto equipe almoço)" },
+        { "time": "11:00", "activity": "Arrumação geral" },
+        { "time": "12:00", "activity": "Almoço (Samuel, Ana, Letícia e Miriane)" },
+        { "time": "13:00", "activity": "Diário de bordo final (Resp.: Heloísa)" },
+        { "time": "14:00", "activity": "Retorno para Araraquara" }
+      ],
+      "menu": {
+        "breakfast": "Pães com manteiga, ovos mexidos, biscoitos, leite, achocolatado e café",
+        "lunch": "Mexidão, calabresa acebolada, batata rústica, salada de repolho",
+        "snack": "—",
+        "dinner": "—"
+      },
+      "materials": [
+        "Material de limpeza para arrumação",
+        "Sacolas para bagagem"
+      ]
+    }
+  ]
+}

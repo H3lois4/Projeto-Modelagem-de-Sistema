@@ -1,0 +1,30 @@
+# Dados sensíveis dos voluntários
+projeto-app/frontend/data/team.json
+projeto-app/seed_team.py
+
+# Python
+__pycache__/
+*.pyc
+*.db
+
+# Virtualenv
+.venv/
+venv/
+
+# Pytest
+.pytest_cache/
+
+# Certs
+projeto-app/backend/certs/
+
+# Uploads (filesystem efêmero no Render — não versionar)
+projeto-app/backend/uploads/*
+!projeto-app/backend/uploads/.gitkeep
+
+# Editor / IDE
+.vscode/
+.kiro/
+
+# OS
+.DS_Store
+Thumbs.db
