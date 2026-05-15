@@ -1,7 +1,7 @@
 {
-  "name": "IPRA no Ariri",
-  "short_name": "IPRA Ariri",
-  "description": "App da missão IPRA no Ariri",
+  "name": "Ide",
+  "short_name": "Ide",
+  "description": "App da missão Ide",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#faf6ee",
@@ -9,7 +9,7 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/assets/Ariri.png",
+      "src": "/assets/Ide.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

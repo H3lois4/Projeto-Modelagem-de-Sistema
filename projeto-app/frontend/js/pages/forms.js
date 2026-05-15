@@ -114,7 +114,7 @@
   function renderFormsPage(container) {
     var html =
       '<div class="page-top-bar">' +
-        '<img src="assets/logo.png" alt="IPRA no Ariri" class="page-top-logo" onerror="this.style.display=\'none\'">' +
+        '<img src="assets/logo.png" alt="Ide" class="page-top-logo" onerror="this.style.display=\'none\'">' +
         '<h1 class="page-top-title">Formulário</h1>' +
       '</div>' +
       '<div class="menu-simple-list">' +

@@ -1,4 +1,4 @@
-"""Script para iniciar o servidor IPRA no Ariri com HTTPS."""
+"""Script para iniciar o servidor Ide com HTTPS."""
 import sys
 import os
 import ssl
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
     context.load_cert_chain(CERT_FILE, KEY_FILE)
 
-    print('\n=== IPRA no Ariri ===')
+    print('\n=== Ide ===')
     print('Acesse no celular: https://<seu-ip>:5000')
     print('Na primeira vez, toque em "Avançado" > "Continuar" no aviso de segurança.')
     print('=====================\n')

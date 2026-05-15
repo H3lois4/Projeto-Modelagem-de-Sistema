@@ -51,13 +51,13 @@ def create_app():
         if database_url.startswith('postgres://'):
             database_url = database_url.replace('postgres://', 'postgresql://', 1)
     else:
-        database_url = 'sqlite:///' + os.path.join(BASE_DIR, 'ariri.db')
+        database_url = 'sqlite:///' + os.path.join(BASE_DIR, 'ide.db')
 
     app.config['SQLALCHEMY_DATABASE_URI'] = database_url
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOADS_DIR'] = UPLOADS_DIR
-    app.config['ACCESS_PIN'] = os.environ.get('ARIRI_PIN', '1234')
-    app.config['ADMIN_PIN'] = os.environ.get('ARIRI_ADMIN_PIN', '4310')
+    app.config['ACCESS_PIN'] = os.environ.get('IDE_PIN', os.environ.get('ARIRI_PIN', '1234'))
+    app.config['ADMIN_PIN'] = os.environ.get('IDE_ADMIN_PIN', os.environ.get('ARIRI_ADMIN_PIN', '4310'))
 
     db.init_app(app)
 

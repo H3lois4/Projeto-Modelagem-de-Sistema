@@ -7,7 +7,7 @@
  * Exposed as window.DB
  */
 const DB = (() => {
-  const DB_NAME = 'ariri_db';
+  const DB_NAME = 'projeto_db';
   const DB_VERSION = 1;
   const STORES = ['pending_forms', 'pending_posts', 'pending_receipts'];
 

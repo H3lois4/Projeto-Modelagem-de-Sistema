@@ -1,4 +1,4 @@
-"""Modelos SQLAlchemy para o IPRA no Ariri."""
+"""Modelos SQLAlchemy para o Ide."""
 
 from datetime import datetime, timezone, timedelta
 

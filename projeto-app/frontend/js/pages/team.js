@@ -37,7 +37,7 @@
     container.innerHTML =
       '<div class="page-top-bar">' +
         '<button class="back-circle-btn" id="team-back">' + backSvg + '</button>' +
-        '<img src="assets/logo.png" alt="IPRA no Ariri" class="page-top-logo" onerror="this.style.display=\'none\'">' +
+        '<img src="assets/logo.png" alt="Ide" class="page-top-logo" onerror="this.style.display=\'none\'">' +
       '</div>' +
       '<h2 class="form-page-title">Dados da Equipe:</h2>' +
       '<div id="team-list"><div class="spinner"></div></div>';

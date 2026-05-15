@@ -1,5 +1,5 @@
 /**
- * IPRA no Ariri — Roteador SPA (app.js)
+ * Ide — Roteador SPA (app.js)
  *
  * Hash-based routing com suporte a parâmetros dinâmicos (:day, :id).
  * Gerencia destaque do ícone ativo na Bottom Navigation Bar.
@@ -166,7 +166,7 @@
   function renderIdentification(container, targetHash) {
     container.innerHTML =
       '<div class="identify-screen">' +
-        '<h1 class="identify-title">Bem-vindo ao IPRA no Ariri</h1>' +
+        '<h1 class="identify-title">Bem-vindo ao Ide</h1>' +
         '<p class="identify-subtitle">Digite seu nome para continuar</p>' +
         '<input type="text" class="identify-input form-input" id="volunteer-name-input" ' +
           'placeholder="Seu nome" autocomplete="off" aria-label="Nome do voluntário">' +
@@ -203,7 +203,7 @@
     }
     container.innerHTML =
       '<div class="splash-screen" id="splash-area">' +
-        '<div class="splash-logo">IPRA no Ariri</div>' +
+        '<div class="splash-logo">Ide</div>' +
         '<p class="splash-verse">' +
           '"Ide ao mundo, pregai o evangelho a toda criatura."' +
           '<cite>Marcos 16:15</cite>' +

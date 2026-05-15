@@ -43,7 +43,7 @@
 
   window.renderAccountsPage = function (container) {
     container.innerHTML =
-      '<div class="page-top-bar"><button class="back-circle-btn" id="acc-back">' + backSvg + '</button><img src="assets/logo.png" alt="IPRA no Ariri" class="page-top-logo" onerror="this.style.display=\'none\'"></div>' +
+      '<div class="page-top-bar"><button class="back-circle-btn" id="acc-back">' + backSvg + '</button><img src="assets/logo.png" alt="Ide" class="page-top-logo" onerror="this.style.display=\'none\'"></div>' +
       '<h2 class="form-page-title">Prestação de contas:</h2>' +
       '<div class="menu-simple-list"><div class="menu-simple-item" id="new-rec-card" role="button" tabindex="0"><span>Adicionar comprovante</span><img src="assets/icon-add.png" class="menu-simple-icon" alt="+"></div></div>' +
       '<div id="rec-list" class="mt-16"></div><div id="rec-load" class="text-center mt-24"><div class="spinner"></div></div>';

@@ -57,7 +57,7 @@
   window.renderDiaryPage = function (container) {
     currentUser = localStorage.getItem('volunteer_name') || '';
     container.innerHTML =
-      '<div class="page-top-bar"><img src="assets/logo.png" alt="IPRA no Ariri" class="page-top-logo" onerror="this.style.display=\'none\'"><h1 class="page-top-title">Diário de Bordo</h1></div>' +
+      '<div class="page-top-bar"><img src="assets/logo.png" alt="Ide" class="page-top-logo" onerror="this.style.display=\'none\'"><h1 class="page-top-title">Diário de Bordo</h1></div>' +
       '<div class="menu-simple-list"><div class="menu-simple-item" id="new-post-card" role="button" tabindex="0"><span>Nova postagem</span><img src="assets/icon-add.png" class="menu-simple-icon" alt="+"></div></div>' +
       '<div id="diary-feed" class="mt-16"></div><div id="diary-loading" class="text-center mt-24"><div class="spinner"></div></div>';
 

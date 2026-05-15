@@ -1,5 +1,5 @@
 /**
- * IPRA no Ariri — Página de Detalhe do Dia (day-detail.js)
+ * Ide — Página de Detalhe do Dia (day-detail.js)
  *
  * Layout: botão voltar (esquerda) + logo (direita) no topo,
  * nome do dia abaixo, e 3 cards grandes: Cronograma, Cardápio, Materiais.
@@ -64,7 +64,7 @@
     container.innerHTML =
       '<div class="page-top-bar">' +
         '<button class="back-circle-btn" id="day-back">' + backArrowSvg + '</button>' +
-        '<img src="assets/logo.png" alt="IPRA no Ariri" class="page-top-logo" onerror="this.style.display=\'none\'">' +
+        '<img src="assets/logo.png" alt="Ide" class="page-top-logo" onerror="this.style.display=\'none\'">' +
       '</div>' +
       '<div class="empty-state"><p class="empty-state-text">Dados não disponíveis</p></div>';
     document.getElementById('day-back').addEventListener('click', function () {
@@ -121,7 +121,7 @@
     container.innerHTML =
       '<div class="page-top-bar">' +
         '<button class="back-circle-btn" id="day-back-loading">' + backArrowSvg + '</button>' +
-        '<img src="assets/logo.png" alt="IPRA no Ariri" class="page-top-logo" onerror="this.style.display=\'none\'">' +
+        '<img src="assets/logo.png" alt="Ide" class="page-top-logo" onerror="this.style.display=\'none\'">' +
       '</div>' +
       '<div class="spinner"></div>';
 
@@ -137,7 +137,7 @@
       var html =
         '<div class="page-top-bar">' +
           '<button class="back-circle-btn" id="day-back-main">' + backArrowSvg + '</button>' +
-          '<img src="assets/logo.png" alt="IPRA no Ariri" class="page-top-logo" onerror="this.style.display=\'none\'">' +
+          '<img src="assets/logo.png" alt="Ide" class="page-top-logo" onerror="this.style.display=\'none\'">' +
         '</div>' +
         '<h2 class="day-detail-day-name">' + day.label + '</h2>' +
         '<div class="detail-cards">' +
