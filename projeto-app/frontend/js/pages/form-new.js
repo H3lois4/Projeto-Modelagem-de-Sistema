@@ -3,7 +3,7 @@
   var ACTION_TYPES = [
     'Evangelismo', 'Infantil', 'Educação',
     'Visitação', 'Manutenção', 'Saúde',
-    'Oração', 'Auxílio ao MEAP', 'P. Socorros',
+    'Oração', 'Auxílio à Equipe', 'P. Socorros',
     'Aconselhamento', 'Cozinha', 'Outros'
   ];
   var backSvg = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="14 8 10 12 14 16"/></svg>';

@@ -12,7 +12,7 @@
 
   var ACTION_TYPES = [
     'Evangelismo', 'Visitação', 'Oração', 'Aconselhamento',
-    'Infantil', 'Manutenção', 'Auxílio ao MEAP', 'Cozinha',
+    'Infantil', 'Manutenção', 'Auxílio à Equipe', 'Cozinha',
     'Educação', 'Saúde', 'P. Socorros', 'Outros'
   ];
 
