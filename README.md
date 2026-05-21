@@ -33,6 +33,19 @@ A aplicação adota uma **arquitetura cliente-servidor em duas camadas físicas 
 
 ### Camadas lógicas no backend
 
+#### Padrão arquitetural
+
+O backend segue uma **Arquitetura em Camadas (_Layered Architecture_)** simplificada em duas camadas lógicas, no estilo **API REST com _Blueprint per feature_** característico de aplicações Flask. Pode ser descrito também como **"thin server" REST**, em que cada _handler_ é um ponto de entrada HTTP que delega persistência diretamente ao ORM, sem uma camada de serviço intermediária.
+
+Características do padrão:
+
+- **Separação por responsabilidade técnica**: cada arquivo cuida de uma fatia bem definida (configuração, modelos, rotas).
+- **Modularização horizontal por recurso (_feature_)**: cada recurso da API tem o seu próprio _Blueprint_ em `routes/`, isolando endpoints e dependências por contexto de negócio.
+- **ORM como abstração de persistência**: SQLAlchemy expõe os modelos como classes; as rotas operam sobre `db.session` diretamente. Não há camada DAO/_Repository_.
+- **_App Factory_ + WSGI**: a aplicação é construída por uma função `create_app()` (padrão recomendado pelo Flask) e exposta ao `gunicorn` por um módulo WSGI separado.
+
+#### Estrutura de pastas
+
 ```
 projeto-app/backend/
 ├── app.py          ← bootstrap da aplicação, configuração, CORS, migrations
@@ -55,6 +68,22 @@ projeto-app/backend/
 - **Entry point WSGI** (`projeto-app/wsgi.py`): expõe `app = create_app()` para o `gunicorn` em produção (Render).
 
 ### Camadas lógicas no frontend
+
+#### Padrão arquitetural
+
+O frontend é uma **SPA (_Single Page Application_) modular**, organizada por _feature_ e construída sem _framework_ (apenas JavaScript _vanilla_). É também uma **PWA _offline-first_**: combina um Service Worker com um cache local (IndexedDB) para que a aplicação funcione mesmo sem rede e sincronize quando o backend ficar acessível.
+
+Características do padrão:
+
+- **SPA com _hash-based routing_** (`app.js`): a URL muda apenas o _hash_ (`#/forms`, `#/diary`, etc.) e o roteador troca a tela renderizada no DOM, sem recarregar a página.
+- **Modularização por tela (_feature_)**: cada arquivo em `js/pages/*.js` é responsável por uma página, expondo uma função `window.render<Nome>Page(container)` que o roteador chama.
+- **Camada de dados em duas frentes**:
+  - cache local em IndexedDB (`db.js`) para armazenar itens criados offline (`pending_forms`, `pending_posts`, `pending_receipts`);
+  - chamadas HTTP via `fetch` para a API REST, com _base URL_ resolvida por `Sync.getServerUrl()`.
+- **Sincronização eventual** (`sync.js`): _polling_ a cada 30 s no `/api/ping`. Quando o backend responde, envia tudo que está pendente em ordem cronológica via `POST /api/sync` e marca como sincronizado.
+- **PWA** (`manifest.json` + `sw.js`): instalável em dispositivos móveis, com Service Worker fazendo cache do _shell_ da aplicação e de respostas idempotentes da API.
+
+#### Estrutura de pastas
 
 ```
 projeto-app/frontend/
