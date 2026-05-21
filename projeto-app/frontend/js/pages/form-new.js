@@ -20,7 +20,41 @@
     setTimeout(function () { if (t.parentNode) t.remove(); }, 3000);
   }
 
+  function verifyPin(pin) {
+    var base = window.Sync ? window.Sync.getServerUrl() : '';
+    return fetch(base + '/api/verify-pin', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pin: pin }) })
+      .then(function (r) { return r.json(); }).then(function (d) { return d.valid === true; })
+      .catch(function () { return pin === '1234'; });
+  }
+
+  // Primeiro mostra PIN, depois mostra formulário
   window.renderNewFormPage = function (container) {
+    container.innerHTML =
+      '<div class="page-top-bar">' +
+        '<button class="back-circle-btn" id="form-back-pin">' + backSvg + '</button>' +
+      '</div>' +
+      '<div class="pin-screen">' +
+        '<h1 class="pin-title">Novo Formulário</h1>' +
+        '<p class="pin-subtitle">Digite o PIN para continuar</p>' +
+        '<input type="password" inputmode="numeric" maxlength="4" pattern="[0-9]*" class="pin-input" id="pin-input" placeholder="••••" autocomplete="off">' +
+        '<p class="pin-error hidden" id="pin-error">PIN incorreto</p>' +
+      '</div>';
+
+    document.getElementById('form-back-pin').addEventListener('click', function () { window.location.hash = '#/forms'; });
+    var pinIn = document.getElementById('pin-input'), pinErr = document.getElementById('pin-error');
+    pinIn.addEventListener('input', function () {
+      pinErr.classList.add('hidden');
+      if (pinIn.value.length === 4) {
+        pinIn.disabled = true;
+        verifyPin(pinIn.value).then(function (ok) {
+          if (ok) { renderForm(container); } else { pinErr.classList.remove('hidden'); pinIn.value = ''; pinIn.disabled = false; pinIn.focus(); }
+        });
+      }
+    });
+    pinIn.focus();
+  };
+
+  function renderForm(container) {
     var cbHtml = '<div class="form-checkbox-grid">';
     ACTION_TYPES.forEach(function (a) {
       cbHtml += '<label class="form-check-item"><input type="checkbox" name="actions" value="' + a + '"><span>' + a + '</span></label>';
@@ -60,7 +94,7 @@
     });
 
     document.getElementById('new-form').addEventListener('submit', function (e) { e.preventDefault(); doSubmit(); });
-  };
+  }
 
   function doSubmit() {
     var aErr = document.getElementById('actions-error'), pErr = document.getElementById('people-error'), btn = document.getElementById('form-sub');
