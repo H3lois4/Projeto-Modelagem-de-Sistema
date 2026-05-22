@@ -2,35 +2,14 @@
   'use strict';
   var backSvg = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="14 8 10 12 14 16"/></svg>';
 
-  function verifyPin(pin) {
-    var base = window.Sync ? window.Sync.getServerUrl() : '';
-    return fetch(base + '/api/verify-pin', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pin: pin }) })
-      .then(function (r) { return r.json(); }).then(function (d) { return d.valid === true; })
-      .catch(function () { return pin === '1234'; });
-  }
-
   function renderPinScreen(container) {
-    container.innerHTML =
-      '<div class="page-top-bar"><button class="back-circle-btn" id="team-back">' + backSvg + '</button></div>' +
-      '<div class="pin-screen">' +
-        '<h1 class="pin-title">Dados da Equipe</h1>' +
-        '<p class="pin-subtitle">Digite o PIN para acessar</p>' +
-        '<input type="password" inputmode="numeric" maxlength="4" pattern="[0-9]*" class="pin-input" id="pin-input" placeholder="••••" autocomplete="off">' +
-        '<p class="pin-error hidden" id="pin-error">PIN incorreto</p>' +
-      '</div>';
-
-    document.getElementById('team-back').addEventListener('click', function () { window.location.hash = '#/menu'; });
-    var pinIn = document.getElementById('pin-input'), pinErr = document.getElementById('pin-error');
-    pinIn.addEventListener('input', function () {
-      pinErr.classList.add('hidden');
-      if (pinIn.value.length === 4) {
-        pinIn.disabled = true;
-        verifyPin(pinIn.value).then(function (ok) {
-          if (ok) { renderTeamList(container); } else { pinErr.classList.remove('hidden'); pinIn.value = ''; pinIn.disabled = false; pinIn.focus(); }
-        });
-      }
+    window.PinScreen.render(container, {
+      title: 'Dados da Equipe',
+      subtitle: 'Digite o PIN para acessar',
+      mode: 'access',
+      onBack: function () { window.location.hash = '#/menu'; },
+      onSuccess: function () { renderTeamList(container); }
     });
-    pinIn.focus();
   }
 
   function renderTeamList(container) {

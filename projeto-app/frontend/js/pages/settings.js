@@ -8,13 +8,6 @@
     setTimeout(function () { if (t.parentNode) t.remove(); }, 3000);
   }
 
-  function verifyAdminPin(pin) {
-    var base = window.Sync ? window.Sync.getServerUrl() : '';
-    return fetch(base + '/api/verify-admin-pin', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pin: pin }) })
-      .then(function (r) { return r.json(); }).then(function (d) { return d.valid === true; })
-      .catch(function () { return pin === '4310'; });
-  }
-
   function clearTable(table, pin) {
     var base = window.Sync ? window.Sync.getServerUrl() : '';
     return fetch(base + '/api/clear/' + table, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pin: pin }) })
@@ -28,28 +21,13 @@
   }
 
   function renderPinScreen(container) {
-    container.innerHTML =
-      '<div class="page-top-bar"><button class="back-circle-btn" id="set-back">' + backSvg + '</button></div>' +
-      '<div class="pin-screen">' +
-        '<h1 class="pin-title">Configurações</h1>' +
-        '<p class="pin-subtitle">Digite o PIN de administrador</p>' +
-        '<input type="password" inputmode="numeric" maxlength="4" pattern="[0-9]*" class="pin-input" id="pin-input" placeholder="••••" autocomplete="off">' +
-        '<p class="pin-error hidden" id="pin-error">PIN incorreto</p>' +
-      '</div>';
-
-    document.getElementById('set-back').addEventListener('click', function () { window.location.hash = '#/menu'; });
-    var pinIn = document.getElementById('pin-input'), pinErr = document.getElementById('pin-error');
-    pinIn.addEventListener('input', function () {
-      pinErr.classList.add('hidden');
-      if (pinIn.value.length === 4) {
-        pinIn.disabled = true;
-        verifyAdminPin(pinIn.value).then(function (ok) {
-          if (ok) { renderSettings(container, pinIn.value); }
-          else { pinErr.classList.remove('hidden'); pinIn.value = ''; pinIn.disabled = false; pinIn.focus(); }
-        });
-      }
+    window.PinScreen.render(container, {
+      title: 'Configurações',
+      subtitle: 'Digite o PIN de administrador',
+      mode: 'admin',
+      onBack: function () { window.location.hash = '#/menu'; },
+      onSuccess: function (pin) { renderSettings(container, pin); }
     });
-    pinIn.focus();
   }
 
   function renderSettings(container, adminPin) {
@@ -68,28 +46,19 @@
 
     document.getElementById('set-back').addEventListener('click', function () { window.location.hash = '#/menu'; });
 
-    document.getElementById('clear-forms').addEventListener('click', function () {
-      if (confirm('Tem certeza que deseja apagar todos os formulários?')) {
-        clearTable('forms', adminPin).then(function (r) { toast(r.message || 'Formulários apagados!', false); }).catch(function () { toast('Erro', true); });
-      }
-    });
+    // Mapa botão → (mensagem confirmação, ação). Substitui 4 listeners quase idênticos.
+    var ACTIONS = [
+      { id: 'clear-forms', confirm: 'Tem certeza que deseja apagar todos os formulários?', run: function () { return clearTable('forms', adminPin); }, ok: 'Formulários apagados!' },
+      { id: 'clear-posts', confirm: 'Tem certeza que deseja apagar todas as postagens?', run: function () { return clearTable('posts', adminPin); }, ok: 'Postagens apagadas!' },
+      { id: 'clear-receipts', confirm: 'Tem certeza que deseja apagar todos os comprovantes?', run: function () { return clearTable('receipts', adminPin); }, ok: 'Comprovantes apagados!' },
+      { id: 'clear-all', confirm: 'ATENÇÃO: Isso vai apagar TODOS os dados (formulários, postagens e comprovantes). Continuar?', run: function () { return clearAll(adminPin); }, ok: 'Tudo apagado!' }
+    ];
 
-    document.getElementById('clear-posts').addEventListener('click', function () {
-      if (confirm('Tem certeza que deseja apagar todas as postagens?')) {
-        clearTable('posts', adminPin).then(function (r) { toast(r.message || 'Postagens apagadas!', false); }).catch(function () { toast('Erro', true); });
-      }
-    });
-
-    document.getElementById('clear-receipts').addEventListener('click', function () {
-      if (confirm('Tem certeza que deseja apagar todos os comprovantes?')) {
-        clearTable('receipts', adminPin).then(function (r) { toast(r.message || 'Comprovantes apagados!', false); }).catch(function () { toast('Erro', true); });
-      }
-    });
-
-    document.getElementById('clear-all').addEventListener('click', function () {
-      if (confirm('ATENÇÃO: Isso vai apagar TODOS os dados (formulários, postagens e comprovantes). Continuar?')) {
-        clearAll(adminPin).then(function (r) { toast(r.message || 'Tudo apagado!', false); }).catch(function () { toast('Erro', true); });
-      }
+    ACTIONS.forEach(function (a) {
+      document.getElementById(a.id).addEventListener('click', function () {
+        if (!confirm(a.confirm)) return;
+        a.run().then(function (r) { toast(r.message || a.ok, false); }).catch(function () { toast('Erro', true); });
+      });
     });
   }
 

@@ -1,18 +1,11 @@
 """Rotas da API para formulários de ação (/api/forms)."""
-import json, base64, uuid
+import json, uuid
 from flask import Blueprint, jsonify, request
 from backend.app import db
 from backend.models import Form
+from backend.utils.files import file_to_base64
 
 forms_bp = Blueprint('forms', __name__)
-
-def _file_to_base64(file_obj):
-    if not file_obj or not file_obj.filename:
-        return None
-    data = file_obj.read()
-    ext = file_obj.filename.rsplit('.', 1)[-1].lower() if '.' in file_obj.filename else 'jpg'
-    mime = 'image/jpeg' if ext in ('jpg','jpeg') else 'image/png' if ext == 'png' else 'image/' + ext
-    return 'data:' + mime + ';base64,' + base64.b64encode(data).decode('utf-8')
 
 @forms_bp.route('/api/forms', methods=['POST'])
 def create_form():
@@ -32,7 +25,7 @@ def create_form():
         if len(actions) == 0:
             return jsonify({"error": "Ao menos uma ação deve ser selecionada"}), 400
 
-        image_data = _file_to_base64(request.files.get('image'))
+        image_data = file_to_base64(request.files.get('image'))
 
         people_served = 1
         ps_raw = request.form.get('people_served')

@@ -1,17 +1,11 @@
 """Rotas da API para postagens do Diário de Bordo (/api/posts)."""
-import base64, uuid
+import uuid
 from flask import Blueprint, jsonify, request
 from backend.app import db
 from backend.models import Post
+from backend.utils.files import file_to_base64
 
 posts_bp = Blueprint('posts', __name__)
-
-def _file_to_base64(file_obj):
-    if not file_obj or not file_obj.filename: return None
-    data = file_obj.read()
-    ext = file_obj.filename.rsplit('.', 1)[-1].lower() if '.' in file_obj.filename else 'jpg'
-    mime = 'image/jpeg' if ext in ('jpg','jpeg') else 'image/png' if ext == 'png' else 'image/' + ext
-    return 'data:' + mime + ';base64,' + base64.b64encode(data).decode('utf-8')
 
 @posts_bp.route('/api/posts', methods=['POST'])
 def create_post():
@@ -25,7 +19,7 @@ def create_post():
             id=request.form.get('id') or str(uuid.uuid4()),
             volunteer_name=volunteer_name, title=title,
             description=request.form.get('description'),
-            image_data=_file_to_base64(request.files.get('image')),
+            image_data=file_to_base64(request.files.get('image')),
         )
         db.session.add(post)
         db.session.commit()
