@@ -3,7 +3,7 @@
 Aplicação web _offline-first_ para registro de ações, postagens, comprovantes e dados de equipe, desenvolvida como trabalho final da disciplina de Modelagem de Sistemas.
 
 - **Frontend** (Vercel): https://projeto-modelagem-de-sistema.vercel.app
-- **Backend** (Render): https://ipra-ariri.onrender.com
+- **Backend** (Render): https://ide-backend-wfoy.onrender.com
 
 ---
 
